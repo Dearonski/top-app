@@ -1,20 +1,112 @@
-import type { Config } from 'tailwindcss'
+import type { Config } from "tailwindcss";
 
 const config: Config = {
-  content: [
-    './pages/**/*.{js,ts,jsx,tsx,mdx}',
-    './components/**/*.{js,ts,jsx,tsx,mdx}',
-    './app/**/*.{js,ts,jsx,tsx,mdx}',
-  ],
-  theme: {
-    extend: {
-      backgroundImage: {
-        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-        'gradient-conic':
-          'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
-      },
+    content: [
+        "./pages/**/*.{js,ts,jsx,tsx,mdx}",
+        "./components/**/*.{js,ts,jsx,tsx,mdx}",
+        "./app/**/*.{js,ts,jsx,tsx,mdx}",
+    ],
+    theme: {
+        colors: {
+            transparent: "transparent",
+            current: "currentColor",
+            black: "#3B434E",
+            gray_light: "#EBEBEB",
+            gray_dark: "#6c7077",
+            gray_border: "#d2d2d2",
+            gray_input: "#A4A4A4",
+            white: "#FFFFFF",
+            white_dark: "#DFDFDF",
+            primary: "#7351F5",
+            primary_hover: "#6344df",
+            red_light: "#fea291",
+            red: "#FC836D",
+            red_2: "#DE0000",
+            green: "#007b48",
+            green_2: "#1DC37E",
+            green_light: "#C8F8E4",
+            body: "#F5F6F8",
+            gray: "#B3C0D9",
+            card_blue: "#f9f8ff",
+        },
+        extend: {
+            gridTemplateColumns: {
+                main: "auto 230px minmax(320px, 1200px) auto",
+                main_mobile: "minmax(320px, 1fr)",
+                footer: "1fr auto auto",
+                footer_mobile: "1fr",
+                firstLevelMenu: "24px 1fr",
+                title: "auto 1fr auto",
+                hhTitle: "auto 1fr",
+                hhData: "1fr 3fr",
+                salary: "1fr 1fr 1fr",
+                product:
+                    "[start] 70px [logoend] 30px [titlestart] calc(50% - 100px) [middle] 1fr [pricestart] auto [priceend] 40px [creditstart] auto [creditend] 40px [ratestart] auto [end]",
+                product_middle: "70px 30px auto 40px auto 40px 1fr",
+                product_mobile: "70px 30px 1fr",
+                review: "[start] auto 1fr  auto auto [end]",
+                review_mobile:
+                    "[start] 30px [titlestart] auto [dateend] 1fr [end]",
+                reviewForm: "[start] auto 1fr auto [end]",
+            },
+            gridTemplateRows: {
+                main: "auto 1fr auto",
+            },
+            boxShadow: {
+                card: "0 0 4px 4px rgba(0, 0, 0, 0.05)",
+            },
+            gridTemplateAreas: {
+                main: [
+                    ". header header .",
+                    ". sidebar body .",
+                    "footer footer footer footer",
+                ],
+                main_mobile: ["header", "body", "footer"],
+                product: [
+                    "logo . title . price . credit . rating",
+                    "logo . tags . priceTitle . creditTitle . rateTitle",
+                    "hr hr hr hr hr hr hr hr hr",
+                    "description description description description description description description description description",
+                    "feature feature feature advBlock advBlock advBlock advBlock advBlock advBlock",
+                    "hr2 hr2 hr2 hr2 hr2 hr2 hr2 hr2 hr2",
+                    "actions actions actions actions actions actions actions actions actions",
+                ],
+                product_middle: [
+                    "logo . title title title title title",
+                    "logo . tags tags tags tags tags",
+                    "price price price . credit . rating",
+                    "priceTitle priceTitle priceTitle . creditTitle . rateTitle",
+                    "hr hr hr hr hr hr hr",
+                    "description description description description description description description",
+                    "feature feature feature feature feature feature feature",
+                    "advBlock advBlock advBlock advBlock advBlock advBlock advBlock",
+                    "hr2 hr2 hr2 hr2 hr2 hr2 hr2",
+                    "actions actions actions actions actions actions actions",
+                ],
+                product_mobile: [
+                    "logo . title",
+                    "logo . tags",
+                    "priceTitle priceTitle price",
+                    "creditTitle creditTitle credit",
+                    "rateTitle rateTitle rating",
+                    "hr hr hr",
+                    "description description description",
+                    "feature feature feature ",
+                    "advBlock advBlock advBlock ",
+                    "hr2 hr2 hr2",
+                    "actions actions actions",
+                ],
+            },
+        },
     },
-  },
-  plugins: [],
-}
-export default config
+    corePlugins: {
+        textOpacity: false,
+        backgroundOpacity: false,
+        borderOpacity: false,
+        divideOpacity: false,
+        placeholderOpacity: false,
+        ringOpacity: false,
+    },
+    plugins: [require("@savvywombat/tailwindcss-grid-areas")],
+};
+export default config;
